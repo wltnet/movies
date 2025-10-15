@@ -7,16 +7,18 @@
     <div v-else-if="moviesStore.error">{{ moviesStore.error }}</div>
     <div class="movie-detail" v-else>
       <h2 v-if="!selectedMovie">Details not found</h2>
-      <h2 v-else>{{ selectedMovie.title }}</h2>
-      <div>
-        <dl class="movie-details">
-          <dt>Genre</dt>
-          <dd>{{ selectedMovie?.genre }}</dd>
-          <dt>Description</dt>
-          <dd>{{ selectedMovie?.description }}</dd>
-          <dt>Rating</dt>
-          <dd>{{ selectedMovie?.rating }}</dd>
-        </dl>
+      <div v-else>
+        <h2>{{ selectedMovie.title }}</h2>
+        <div>
+          <dl class="movie-details">
+            <dt>Genre</dt>
+            <dd>{{ selectedMovie?.genre }}</dd>
+            <dt>Description</dt>
+            <dd>{{ selectedMovie?.description }}</dd>
+            <dt>Rating</dt>
+            <dd>{{ selectedMovie?.rating }}</dd>
+          </dl>
+        </div>
       </div>
     </div>
   </section>
