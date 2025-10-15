@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { onMounted } from 'vue';
-import { useMoviesStore } from '../stores/movies';
+import { useMoviesStore } from '@/stores/movies';
+import MovieCard from '@/components/MovieCard.vue';
 
 const moviesStore = useMoviesStore();
 
@@ -17,10 +18,7 @@ onMounted(() => {
     <div v-if="moviesStore.loading">Loading...</div>
     <div v-else-if="moviesStore.error">{{ moviesStore.error }}</div>
     <ul class="movies-list" v-else>
-      <li v-for="movie in moviesStore.movies" :key="movie.id">
-        <h2>{{ movie.title }}</h2>
-        <div>{{ movie.genre }} | Rating: {{ movie.rating }}</div>
-      </li>
+      <MovieCard v-for="movie in moviesStore.movies" :key="movie.id" :movie="movie" />
     </ul>
   </section>
 </template>
