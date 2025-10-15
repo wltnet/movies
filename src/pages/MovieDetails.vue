@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { computed, onMounted } from 'vue';
 import { useMoviesStore } from '@/stores/movies';
+import RecommendationWidget from '@/components/RecommendationWidget.vue';
 import type { Movie } from '../../server/data';
 
 const moviesStore = useMoviesStore();
@@ -22,7 +23,7 @@ const selectedMovie = computed<Movie | undefined>(() =>
 
 <template>
   <div>
-    <h1>Movies</h1>
+    <h1>Movie Details</h1>
   </div>
   <section>
     <div v-if="moviesStore.loading">Loading...</div>
@@ -40,6 +41,7 @@ const selectedMovie = computed<Movie | undefined>(() =>
             <dt>Rating</dt>
             <dd>{{ selectedMovie?.rating }}</dd>
           </dl>
+          <RecommendationWidget :selectedMovie="selectedMovie" />
         </div>
       </div>
     </div>
