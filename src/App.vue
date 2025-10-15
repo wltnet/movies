@@ -1,9 +1,9 @@
-<script setup lang="ts">
-import MoivesList from './pages/MoviesList.vue';
-</script>
+<script setup lang="ts"></script>
 
 <template>
-  <MoivesList />
+  <main>
+    <router-view />
+  </main>
 </template>
 
 <style scoped></style>
