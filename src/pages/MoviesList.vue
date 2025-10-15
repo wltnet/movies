@@ -29,6 +29,7 @@ onMounted(() => {
   margin: 0;
   padding: 0;
 }
+
 .movies-list li {
   margin-bottom: 10px;
   padding: 10px;
