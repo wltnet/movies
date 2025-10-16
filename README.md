@@ -1,70 +1,72 @@
-# vuetest
+# Movies Data
 
-This template should help get you started developing with Vue 3 in Vite.
+## Project Overview:
 
-## Recommended IDE Setup
+The app displays a list of movies and allows users to view detailed information for each movie.
+On the movie detail page, it also provides recommendations of similar movies based on genre.
 
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+Additionally, the app includes a chart showing the average rating per genre for all movies, implemented using Chart.js.
 
-## Recommended Browser Setup
+### Motivation:
 
-- Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd) 
-  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox:
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
-
-## Type Support for `.vue` Imports in TS
-
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vite.dev/config/).
+I chose this project because I enjoy watching movies, and it was a challenge for me to create my first chart using Chart.js. This project helped me practice Vue 3 with TypeScript, reactive state management, and data visualization.
 
 ## Project Setup
+
+### In root (for frontend)
 
 ```sh
 npm install
 ```
 
-### Compile and Hot-Reload for Development
+### Then in /server (for backend)
+
+```sh
+cd server
+npm install
+```
+
+### Compile and Hot-Reload for Development in root
+
+In root directory
 
 ```sh
 npm run dev
 ```
 
-### Type-Check, Compile and Minify for Production
+### Viewing in browser
 
-```sh
-npm run build
-```
+In browser visit http://localhost:5173/
 
-### Run Unit Tests with [Vitest](https://vitest.dev/)
+## Data source
 
-```sh
-npm run test:unit
-```
+The movie dataset used in this project was manually created, the movies names are from the one I have watched or heard of. Descriptions and genres are summarised based on sources from IMDB, Wikipedia or Netflix.
 
-### Run End-to-End Tests with [Cypress](https://www.cypress.io/)
+## Trade-off
 
-```sh
-npm run test:e2e:dev
-```
+- No pagination or lazy loading yet - at current all movies data load at once, for a large data set would affect performace.
+- recommendation logic only base on genre to keep it simple, in real world it should include other factors.
+- currently the app fetch movies data inside onMounted() if the store is empty to keep simple, but it doesn't persist across page reload.
 
-This runs the end-to-end tests against the Vite development server.
-It is much faster than the production build.
+## Future improvements
 
-But it's still recommended to test the production build with `test:e2e` before deploying (e.g. in CI environments):
+- Paddgination with control navigation.
+- Filtering - add filter, user can filter movies by genre, rating ..etc
+- Sorting - add sorting by movie's name.
+- Liking feature - liking movies which can also added for a factor of the recommendation logic
+- Caching - use Map to cach data to improve performance
 
-```sh
-npm run build
-npm run test:e2e
-```
+## Git History
 
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
+- vue and express server initial setup
+- add movies data and movies api
+- load movie data with pinia and display movies list
+- setup route for movies list page
+- create movie card and apply to MoviesList
+- add movie details page and route
+- make correction of the v-else in MovieDetails component
+- move script into the top for consistency
+- add recommendation widget
+- add movies rating chart page
+- add navigation
+- add lang en in html tag
